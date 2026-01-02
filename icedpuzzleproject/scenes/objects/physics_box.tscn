@@ -5,3 +5,4 @@
 
 [node name="PhysicsBox" instance=ExtResource("1_kodjg")]
 script = ExtResource("2_nxu2p")
+speed = 60.0

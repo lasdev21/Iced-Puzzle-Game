@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c2o43xkp86whx"]
+[gd_scene load_steps=10 format=4 uid="uid://c2o43xkp86whx"]
 
 [ext_resource type="Texture2D" uid="uid://8rs5r657p4tm" path="res://testsprites/Ice Free Sample_nnekart.png" id="1_fr1um"]
 [ext_resource type="PackedScene" uid="uid://dpanx6apnjbjt" path="res://scenes/characters/main_character.tscn" id="1_yautc"]
@@ -80,70 +80,42 @@ terrain_set_0/terrain_0/name = "ice_walkable"
 terrain_set_0/terrain_0/color = Color(0.0627451, 0.4392157, 0.6627451, 1)
 sources/0 = SubResource("TileSetAtlasSource_v45ci")
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fr1um"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_yautc"]
+b = Vector2(0, 108)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fr1um"]
-size = Vector2(8, 80)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fr1um"]
+b = Vector2(192, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v45ci"]
-size = Vector2(176, 8)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_v45ci"]
+a = Vector2(0, 108)
+b = Vector2(192, 108)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_48ne7"]
-size = Vector2(176, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xh4u"]
-size = Vector2(8, 80)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_48ne7"]
+a = Vector2(192, 0)
+b = Vector2(192, 108)
 
 [node name="TestLevel" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAACAAEAAAAHAAAAAAACAAIAAAAAAAAAAAADAAEAAAAHAAAAAAADAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAEAAAAHAAAAAAAFAAEAAAAHAAAAAAAGAAEAAAAHAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAHAAAAAAAIAAEAAAAHAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAEAAAAHAAAAAAAHAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAUAAAAHAAIAAAADAAUAAAAHAAIAAAAEAAUAAAAHAAIAAAAIAAUAAAAHAAIAAAAJAAUAAAAHAAIAAAAHAAUAAAAHAAIAAAAGAAUAAAAHAAIAAAAFAAUAAAAHAAIAAAAKAAUAAAAIAAIAAAABAAUAAAAGAAIAAAABAAQAAAAGAAEAAAABAAMAAAAGAAEAAAABAAIAAAAGAAEAAAABAAEAAAAGAAAAAAAKAAQAAAAIAAEAAAAKAAMAAAAIAAEAAAAKAAIAAAAIAAEAAAAKAAEAAAAIAAAAAAA=")
+tile_map_data = PackedByteArray("AAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAEAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAAAAYAAAAGAAIAAAABAAYAAAAHAAIAAAACAAYAAAAHAAIAAAADAAYAAAAHAAIAAAAEAAYAAAAHAAIAAAAFAAYAAAAHAAIAAAAGAAYAAAAHAAIAAAAHAAYAAAAHAAIAAAAIAAYAAAAHAAIAAAAJAAYAAAAHAAIAAAAKAAYAAAAHAAIAAAALAAYAAAAIAAIAAAAKAAUAAAAAAAAAAAALAAUAAAAIAAEAAAALAAQAAAAIAAEAAAALAAMAAAAIAAEAAAALAAIAAAAIAAEAAAALAAEAAAAIAAEAAAALAAAAAAAIAAAAAAAKAAAAAAAHAAAAAAAJAAAAAAAHAAAAAAAIAAAAAAAHAAAAAAAHAAAAAAAHAAAAAAAGAAAAAAAHAAAAAAAFAAAAAAAHAAAAAAAEAAAAAAAHAAAAAAADAAAAAAAHAAAAAAACAAAAAAAHAAAAAAABAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAEAAAAGAAEAAAAAAAIAAAAGAAEAAAAAAAMAAAAGAAEAAAAAAAQAAAAGAAEAAAAAAAUAAAAGAAEAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_48ne7")
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_yautc")]
-position = Vector2(48, 48)
-disable_mode = 2
-slide_on_ceiling = false
-floor_block_on_wall = false
-platform_floor_layers = 4278190086
-platform_wall_layers = 6
-speed = 80.0
-
-[node name="PhysicsBox" parent="." instance=ExtResource("2_fr1um")]
-position = Vector2(112, 48)
-disable_mode = 2
-collision_mask = 7
-motion_mode = 1
-slide_on_ceiling = false
-floor_block_on_wall = false
-platform_on_leave = 2
-platform_floor_layers = 4278190085
-platform_wall_layers = 5
-speed = 80.0
+position = Vector2(48, 32)
 
 [node name="Limits" type="StaticBody2D" parent="."]
-disable_mode = 1
-collision_layer = 4
-collision_mask = 3
-collision_priority = 20.0
-physics_material_override = SubResource("PhysicsMaterial_fr1um")
 
 [node name="LeftLimit" type="CollisionShape2D" parent="Limits"]
-position = Vector2(12, 56)
-shape = SubResource("RectangleShape2D_fr1um")
+shape = SubResource("SegmentShape2D_yautc")
 
 [node name="TopLimit" type="CollisionShape2D" parent="Limits"]
-position = Vector2(96, 12)
-shape = SubResource("RectangleShape2D_v45ci")
+shape = SubResource("SegmentShape2D_fr1um")
 
 [node name="BottomLimit" type="CollisionShape2D" parent="Limits"]
-position = Vector2(96, 100)
-shape = SubResource("RectangleShape2D_48ne7")
+shape = SubResource("SegmentShape2D_v45ci")
 
 [node name="RightLimit" type="CollisionShape2D" parent="Limits"]
-position = Vector2(180, 56)
-shape = SubResource("RectangleShape2D_6xh4u")
+shape = SubResource("SegmentShape2D_48ne7")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-visible = false
-anchor_mode = 0
+[node name="PhysicsBox" parent="." instance=ExtResource("2_fr1um")]
+position = Vector2(96, 32)
